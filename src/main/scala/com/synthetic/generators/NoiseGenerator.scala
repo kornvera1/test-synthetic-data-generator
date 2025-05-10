@@ -14,7 +14,6 @@ class NoiseGenerator(spark: SparkSession) {
     this
   }
 
-  // Метод для добавления шума к текущему DF
   def addNoise(field: String, noiseLevel: Double): NoiseGenerator = {
     require(currentDf != null, "You must call addNoise(df, field, level) first")
     currentDf = applyNoise(currentDf, field, noiseLevel)
@@ -30,7 +29,6 @@ class NoiseGenerator(spark: SparkSession) {
   }
 
   private def applyNoise(df: DataFrame, field: String, noiseLevel: Double): DataFrame = {
-    // Правильная реализация добавления шума
     df.withColumn(field,
       col(field) * (lit(1.0) + (rand() - lit(0.5)) * lit(noiseLevel)))
   }

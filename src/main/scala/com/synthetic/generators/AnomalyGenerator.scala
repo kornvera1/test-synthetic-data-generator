@@ -8,13 +8,11 @@ class AnomalyGenerator(spark: SparkSession) {
 
   private var currentDf: DataFrame = _
 
-  // Инициализирующий метод (должен вызываться первым)
   def addAnomalies(df: DataFrame, field: String, anomalyFraction: Double): AnomalyGenerator = {
     currentDf = createAnomalies(df, field, anomalyFraction)
     this
   }
 
-  // Метод для добавления аномалий к текущему DF
   def addAnomalies(field: String, anomalyFraction: Double): AnomalyGenerator = {
     require(currentDf != null, "You must call addAnomalies(df, field, fraction) first")
     currentDf = createAnomalies(currentDf, field, anomalyFraction)
