@@ -1,0 +1,18 @@
+# IDEA
+.idea/
+*.iml
+*.iws
+
+# Build
+target/
+out/
+dist/
+
+# Spark
+spark-warehouse/
+derby.log
+
+# Other
+*.class
+*.log
+*.jar
